@@ -11,21 +11,18 @@ import java.net.URL;
 
 @UtilityClass
 public class GameUtils {
-    public static final Image snakeHeadUp = getImage(getResourceUrl("images/snake_head_up.png"));
-    public static final Image snakeHeadDown = getImage(getResourceUrl("images/snake_head_down.png"));
-    public static final Image snakeHeadLeft = getImage(getResourceUrl("images/snake_head_left.png"));
-    public static final Image snakeHeadRight = getImage(getResourceUrl("images/snake_head_right.png"));
+    public static final Image snakeHeadUp = getImage("images/snake_head_up.png");
+    public static final Image snakeHeadDown = getImage("images/snake_head_down.png");
+    public static final Image snakeHeadLeft = getImage("images/snake_head_left.png");
+    public static final Image snakeHeadRight = getImage("images/snake_head_right.png");
 
-    public static final Image snakeBody = getImage(getResourceUrl("images/snake_body.png"));
+    public static final Image snakeBody = getImage("images/snake_body.png");
 
-    public static final Image food = getImage(getResourceUrl("images/food.png"));
+    public static final Image food = getImage("images/food.png");
 
-    private static Image getImage(final URL imageUrl) {
+    private static Image getImage(final String resourcePath) {
+        final URL imageUrl = GameUtils.class.getClassLoader().getResource(resourcePath);
         return Toolkit.getDefaultToolkit().getImage(imageUrl);
-    }
-
-    private static URL getResourceUrl(final String resourcePath) {
-        return GameUtils.class.getClassLoader().getResource(resourcePath);
     }
 
     public static void drawString(Graphics graphics, String str, Color color, int size, int x, int y) {

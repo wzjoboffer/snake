@@ -16,8 +16,28 @@ public class SnakeHead extends Snake {
         super(image, x, y, gameWin);
     }
 
+    public void move() {
+        switch (direction) {
+            case "up":
+                y -= height;
+                break;
+            case "down":
+                y += height;
+                break;
+            case "left":
+                x -= width;
+                break;
+            case "right":
+                x += width;
+                break;
+            default:
+                break;
+        }
+    }
+
     @Override
     public void draw(Graphics graphics) {
         super.draw(graphics);
+        move();
     }
 }

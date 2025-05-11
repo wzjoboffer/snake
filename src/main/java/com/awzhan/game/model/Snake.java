@@ -12,8 +12,8 @@ import java.awt.Image;
 @Setter
 @AllArgsConstructor
 public class Snake {
-    private final int width = 30;
-    private final int height = 30;
+    protected final int width = 30;
+    protected final int height = 30;
 
     protected Image image;
     protected int x;

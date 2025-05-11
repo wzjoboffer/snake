@@ -21,6 +21,15 @@ public class GameWin extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle(TITLE);
         this.setVisible(true);
+
+        while (true) {
+            repaint();
+            try {
+                Thread.sleep(200L);
+            } catch (InterruptedException e) {
+                // ignore
+            }
+        }
     }
 
     @Override
