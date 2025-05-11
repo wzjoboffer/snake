@@ -1,15 +1,19 @@
 package com.awzhan.game;
 
+import com.awzhan.game.model.SnakeHead;
+import com.awzhan.game.util.GameUtils;
+
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Graphics;
 
 public class GameWin extends JFrame {
     private static final String TITLE = "Snake Game";
-
     private static final int HEIGHT = 600;
     private static final int WIDTH = 600;
     private static final int INTERVAL = 30;
+
+    private final SnakeHead snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 30, 570, this);
 
     public void launch() {
         this.setSize(WIDTH, HEIGHT);
@@ -31,6 +35,8 @@ public class GameWin extends JFrame {
             // vertical lines
             graphics.drawLine(i * INTERVAL, 0, i * INTERVAL, HEIGHT);
         }
+
+        snakeHead.draw(graphics);
     }
 
     public static void main(String[] args) {
