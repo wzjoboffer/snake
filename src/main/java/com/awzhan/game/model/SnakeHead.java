@@ -26,7 +26,6 @@ public class SnakeHead extends Snake {
     }
 
     private void changeDirection(KeyEvent event) {
-        System.out.println(event.getKeyCode());
         switch (event.getKeyCode()) {
             case KeyEvent.VK_UP:
                 if (!"down".equalsIgnoreCase(direction)) {
@@ -80,5 +79,14 @@ public class SnakeHead extends Snake {
     public void draw(Graphics graphics) {
         super.draw(graphics);
         move();
+        if (x < 0) {
+            x = 570;
+        } else if (x > 570) {
+            x = 0;
+        } else if (y < 30) {
+            y = 570;
+        } else if (y > 570) {
+            y = 30;
+        }
     }
 }
