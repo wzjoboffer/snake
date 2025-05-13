@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 @Getter
 @Setter
@@ -57,6 +58,14 @@ public class SnakeHead extends Snake {
     }
 
     public void move() {
+        List<SnakeBody> snakeBodyList = this.gameWin.getSnakeBodyList();
+        for (int i = 1; i < snakeBodyList.size(); i++) {
+            snakeBodyList.get(i).x = snakeBodyList.get(i-1).x;
+            snakeBodyList.get(i).y = snakeBodyList.get(i-1).y;
+        }
+        snakeBodyList.get(0).x = this.x;
+        snakeBodyList.get(0).y = this.y;
+
         switch (direction) {
             case "up":
                 y -= height;

@@ -1,11 +1,15 @@
 package com.awzhan.game;
 
+import com.awzhan.game.model.SnakeBody;
 import com.awzhan.game.model.SnakeHead;
 import com.awzhan.game.util.GameUtils;
+import lombok.Getter;
 
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameWin extends JFrame {
     private static final String TITLE = "Snake Game";
@@ -14,6 +18,10 @@ public class GameWin extends JFrame {
     private static final int INTERVAL = 30;
 
     private final SnakeHead snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 30, 570, this);
+    @Getter
+    private final List<SnakeBody> snakeBodyList = List.of(
+            new SnakeBody(GameUtils.snakeBody, 30, 570, this),
+            new SnakeBody(GameUtils.snakeBody, 0, 570, this));
 
     public void launch() {
         this.setSize(WIDTH, HEIGHT);
@@ -45,6 +53,9 @@ public class GameWin extends JFrame {
             graphics.drawLine(i * INTERVAL, 0, i * INTERVAL, HEIGHT);
         }
 
+        for (int i = snakeBodyList.size() - 1; i >= 0; i--) {
+            snakeBodyList.get(i).draw(graphics);
+        }
         snakeHead.draw(graphics);
     }
 
