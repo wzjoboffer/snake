@@ -1,5 +1,6 @@
 package com.awzhan.game;
 
+import com.awzhan.game.model.Food;
 import com.awzhan.game.model.SnakeBody;
 import com.awzhan.game.model.SnakeHead;
 import com.awzhan.game.util.GameUtils;
@@ -17,11 +18,18 @@ public class GameWin extends JFrame {
     private static final int WIDTH = 600;
     private static final int INTERVAL = 30;
 
-    private final SnakeHead snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 30, 570, this);
+    private final SnakeHead snakeHead;
     @Getter
-    private final List<SnakeBody> snakeBodyList = List.of(
-            new SnakeBody(GameUtils.snakeBody, 30, 570, this),
-            new SnakeBody(GameUtils.snakeBody, 0, 570, this));
+    private final List<SnakeBody> snakeBodyList;
+    private final Food food;
+
+    public GameWin() {
+        this.snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 30, 570, this);
+        this.snakeBodyList = new ArrayList<>();
+        this.snakeBodyList.add(new SnakeBody(GameUtils.snakeBody, 30, 570, this));
+        this.snakeBodyList.add(new SnakeBody(GameUtils.snakeBody, 0, 570, this));
+        this.food = Food.getFood(this);
+    }
 
     public void launch() {
         this.setSize(WIDTH, HEIGHT);
@@ -57,6 +65,7 @@ public class GameWin extends JFrame {
             snakeBodyList.get(i).draw(graphics);
         }
         snakeHead.draw(graphics);
+        food.draw(graphics);
     }
 
     public static void main(String[] args) {
