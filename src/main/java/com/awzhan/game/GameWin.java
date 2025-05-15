@@ -5,6 +5,7 @@ import com.awzhan.game.model.SnakeBody;
 import com.awzhan.game.model.SnakeHead;
 import com.awzhan.game.util.GameUtils;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.JFrame;
 import java.awt.Color;
@@ -21,7 +22,8 @@ public class GameWin extends JFrame {
     private final SnakeHead snakeHead;
     @Getter
     private final List<SnakeBody> snakeBodyList;
-    private final Food food;
+    @Getter @Setter
+    private Food food;
 
     public GameWin() {
         this.snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 30, 570, this);

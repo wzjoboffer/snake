@@ -59,7 +59,7 @@ public class SnakeHead extends Snake {
 
     public void move() {
         List<SnakeBody> snakeBodyList = this.gameWin.getSnakeBodyList();
-        for (int i = 1; i < snakeBodyList.size(); i++) {
+        for (int i = snakeBodyList.size() - 1; i >= 1; i--) {
             snakeBodyList.get(i).x = snakeBodyList.get(i-1).x;
             snakeBodyList.get(i).y = snakeBodyList.get(i-1).y;
         }
@@ -87,7 +87,24 @@ public class SnakeHead extends Snake {
     @Override
     public void draw(Graphics graphics) {
         super.draw(graphics);
+
+        Integer lastX = null;
+        Integer lastY = null;
+        final Food food = this.gameWin.getFood();
+        if (this.x == food.x && this.y == food.y) {
+            this.gameWin.setFood(Food.getFood(this.gameWin));
+
+            final SnakeBody lastBody = this.gameWin.getSnakeBodyList().getLast();
+            lastX = lastBody.getX();
+            lastY = lastBody.getY();
+        }
+
         move();
+
+        if (lastX != null && lastY != null) {
+            this.gameWin.getSnakeBodyList().add(new SnakeBody(GameUtils.snakeBody, lastX, lastY, this.gameWin));
+        }
+
         if (x < 0) {
             x = 570;
         } else if (x > 570) {
