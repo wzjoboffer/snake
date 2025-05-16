@@ -20,6 +20,7 @@ public class GameWin extends JFrame {
     private static final int INTERVAL = 30;
 
     public static int score = 0;
+    public static int state = 0;
 
     private final SnakeHead snakeHead;
     @Getter
@@ -43,7 +44,9 @@ public class GameWin extends JFrame {
         this.setVisible(true);
 
         while (true) {
-            repaint();
+            if (state == 1) {
+                repaint();
+            }
             try {
                 Thread.sleep(200L);
             } catch (InterruptedException e) {
@@ -72,6 +75,16 @@ public class GameWin extends JFrame {
         food.draw(graphics);
 
         GameUtils.drawString(graphics, score + "", Color.blue, 50, 650, 300);
+
+        graphics.setColor(Color.gray);
+        prompt(graphics);
+    }
+
+    private void prompt(final Graphics graphics) {
+        if (state == 0) {
+            graphics.fillRect(120, 240, 400, 70);
+            GameUtils.drawString(graphics, "Press space to start", Color.yellow, 30, 150, 290);
+        }
     }
 
     public static void main(String[] args) {
