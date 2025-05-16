@@ -10,6 +10,8 @@ import lombok.Setter;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,28 @@ public class GameWin extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle(TITLE);
         this.setVisible(true);
+
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent event) {
+                if (event.getKeyCode() == KeyEvent.VK_SPACE) {
+                    switch (state) {
+                        case 0:
+                            state = 1;
+                            break;
+                        case 1:
+                            state = 2;
+                            repaint();
+                            break;
+                        case 2:
+                            state = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        });
 
         while (true) {
             if (state == 1) {
