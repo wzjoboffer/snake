@@ -97,6 +97,8 @@ public class SnakeHead extends Snake {
             final SnakeBody lastBody = this.gameWin.getSnakeBodyList().getLast();
             lastX = lastBody.getX();
             lastY = lastBody.getY();
+
+            GameWin.score++;
         }
 
         move();
