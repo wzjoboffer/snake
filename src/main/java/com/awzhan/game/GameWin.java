@@ -109,6 +109,14 @@ public class GameWin extends JFrame {
             graphics.fillRect(120, 240, 400, 70);
             GameUtils.drawString(graphics, "Press space to start", Color.yellow, 30, 150, 290);
         }
+        else if (state == 2) {
+            graphics.fillRect(120, 240, 400, 70);
+            GameUtils.drawString(graphics, "Press space to resume", Color.yellow, 30, 150, 290);
+        }
+        else if (state == 4) {
+            graphics.fillRect(120, 240, 400, 70);
+            GameUtils.drawString(graphics, "Completed", Color.green, 30, 150, 290);
+        }
     }
 
     public static void main(String[] args) {

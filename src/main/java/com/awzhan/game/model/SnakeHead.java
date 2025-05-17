@@ -101,6 +101,10 @@ public class SnakeHead extends Snake {
             GameWin.score++;
         }
 
+        if (GameWin.score >= 3) {
+            GameWin.state = 4;
+        }
+
         move();
 
         if (lastX != null && lastY != null) {
