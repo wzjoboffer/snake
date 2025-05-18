@@ -62,6 +62,11 @@ public class SnakeHead extends Snake {
         for (int i = snakeBodyList.size() - 1; i >= 1; i--) {
             snakeBodyList.get(i).x = snakeBodyList.get(i-1).x;
             snakeBodyList.get(i).y = snakeBodyList.get(i-1).y;
+
+            if (this.x == snakeBodyList.get(i).x && this.y == snakeBodyList.get(i).y) {
+                GameWin.state = 3;
+            }
+
         }
         snakeBodyList.get(0).x = this.x;
         snakeBodyList.get(0).y = this.y;
@@ -101,7 +106,7 @@ public class SnakeHead extends Snake {
             GameWin.score++;
         }
 
-        if (GameWin.score >= 3) {
+        if (GameWin.score >= 15) {
             GameWin.state = 4;
         }
 

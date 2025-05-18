@@ -31,7 +31,7 @@ public class GameWin extends JFrame {
     private Food food;
 
     public GameWin() {
-        this.snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 30, 570, this);
+        this.snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 60, 570, this);
         this.snakeBodyList = new ArrayList<>();
         this.snakeBodyList.add(new SnakeBody(GameUtils.snakeBody, 30, 570, this));
         this.snakeBodyList.add(new SnakeBody(GameUtils.snakeBody, 0, 570, this));
@@ -112,6 +112,10 @@ public class GameWin extends JFrame {
         else if (state == 2) {
             graphics.fillRect(120, 240, 400, 70);
             GameUtils.drawString(graphics, "Press space to resume", Color.yellow, 30, 150, 290);
+        }
+        else if (state == 3) {
+            graphics.fillRect(120, 240, 400, 70);
+            GameUtils.drawString(graphics, "Eat yourself", Color.red, 30, 150, 290);
         }
         else if (state == 4) {
             graphics.fillRect(120, 240, 400, 70);
