@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class GameWin extends JFrame {
     private final List<SnakeBody> snakeBodyList;
     @Getter @Setter
     private Food food;
+
+    private Image cacheImage = null;
 
     public GameWin() {
         this.snakeHead = new SnakeHead(GameUtils.snakeHeadRight, 60, 570, this);
@@ -81,27 +84,34 @@ public class GameWin extends JFrame {
 
     @Override
     public void paint(Graphics graphics) {
-        graphics.setColor(Color.GRAY);
-        graphics.fillRect(0, 0, WIDTH, HEIGHT);
+        if (this.cacheImage == null) {
+            this.cacheImage = createImage(WIDTH, HEIGHT);
+        }
+        Graphics cacheGraphics = cacheImage.getGraphics();
 
-        graphics.setColor(Color.black);
+        cacheGraphics.setColor(Color.GRAY);
+        cacheGraphics.fillRect(0, 0, WIDTH, HEIGHT);
+
+        cacheGraphics.setColor(Color.black);
         for (int i = 0; i <= 20; i++) {
             // horizontal lines
-            graphics.drawLine(0, i * INTERVAL, 600, i * 30);
+            cacheGraphics.drawLine(0, i * INTERVAL, 600, i * 30);
             // vertical lines
-            graphics.drawLine(i * INTERVAL, 0, i * INTERVAL, HEIGHT);
+            cacheGraphics.drawLine(i * INTERVAL, 0, i * INTERVAL, HEIGHT);
         }
 
         for (int i = snakeBodyList.size() - 1; i >= 0; i--) {
-            snakeBodyList.get(i).draw(graphics);
+            snakeBodyList.get(i).draw(cacheGraphics);
         }
-        snakeHead.draw(graphics);
-        food.draw(graphics);
+        snakeHead.draw(cacheGraphics);
+        food.draw(cacheGraphics);
 
-        GameUtils.drawString(graphics, score + "", Color.blue, 50, 650, 300);
+        GameUtils.drawString(cacheGraphics, score + "", Color.blue, 50, 650, 300);
 
-        graphics.setColor(Color.gray);
-        prompt(graphics);
+        cacheGraphics.setColor(Color.gray);
+        prompt(cacheGraphics);
+
+        graphics.drawImage(cacheImage, 0, 0, null);
     }
 
     private void prompt(final Graphics graphics) {
