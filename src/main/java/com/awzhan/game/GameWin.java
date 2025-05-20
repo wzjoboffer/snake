@@ -22,8 +22,8 @@ public class GameWin extends JFrame {
     private static final int HEIGHT = 600;
     private static final int INTERVAL = 30;
 
-    public static int score = 0;
     public static int state = 0;
+    public int score = 0;
 
     private final SnakeHead snakeHead;
     @Getter
@@ -63,6 +63,9 @@ public class GameWin extends JFrame {
                         case 2:
                             state = 1;
                             break;
+                        case 3:
+                            state = 5;
+                            break;
                         default:
                             break;
                     }
@@ -73,6 +76,10 @@ public class GameWin extends JFrame {
         while (true) {
             if (state == 1) {
                 repaint();
+            }
+            if (state == 5) {
+                state = 0;
+                reset();
             }
             try {
                 Thread.sleep(200L);
@@ -131,6 +138,16 @@ public class GameWin extends JFrame {
             graphics.fillRect(120, 240, 400, 70);
             GameUtils.drawString(graphics, "Completed", Color.green, 30, 150, 290);
         }
+    }
+
+    private void reset() {
+        this.dispose();
+        start();
+    }
+
+    private void start() {
+        GameWin gameWin = new GameWin();
+        gameWin.launch();
     }
 
     public static void main(String[] args) {

@@ -103,11 +103,11 @@ public class SnakeHead extends Snake {
             lastX = lastBody.getX();
             lastY = lastBody.getY();
 
-            GameWin.score++;
+            this.gameWin.score++;
         }
 
-        if (GameWin.score >= 15) {
-            GameWin.state = 4;
+        if (this.gameWin.score >= 15) {
+            this.gameWin.state = 4;
         }
 
         move();
