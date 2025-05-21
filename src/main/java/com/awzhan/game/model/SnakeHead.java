@@ -106,7 +106,7 @@ public class SnakeHead extends Snake {
             this.gameWin.score++;
         }
 
-        if (this.gameWin.score >= 15) {
+        if (this.gameWin.score >= 2) {
             this.gameWin.state = 4;
         }
 

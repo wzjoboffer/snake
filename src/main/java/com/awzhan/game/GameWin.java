@@ -66,6 +66,9 @@ public class GameWin extends JFrame {
                         case 3:
                             state = 5;
                             break;
+                        case 4:
+                            state = 6;
+                            break;
                         default:
                             break;
                     }
@@ -79,6 +82,11 @@ public class GameWin extends JFrame {
             }
             if (state == 5) {
                 state = 0;
+                reset();
+            }
+            if (state == 6 && GameUtils.level < 3) {
+                state = 1;
+                GameUtils.level++;
                 reset();
             }
             try {
@@ -113,7 +121,9 @@ public class GameWin extends JFrame {
         snakeHead.draw(cacheGraphics);
         food.draw(cacheGraphics);
 
-        GameUtils.drawString(cacheGraphics, score + "", Color.blue, 50, 650, 300);
+        GameUtils.drawString(cacheGraphics, "Level " + GameUtils.level, Color.ORANGE, 40, 650, 260);
+
+        GameUtils.drawString(cacheGraphics, score + "", Color.blue, 50, 650, 330);
 
         cacheGraphics.setColor(Color.gray);
         prompt(cacheGraphics);
@@ -136,7 +146,11 @@ public class GameWin extends JFrame {
         }
         else if (state == 4) {
             graphics.fillRect(120, 240, 400, 70);
-            GameUtils.drawString(graphics, "Completed", Color.green, 30, 150, 290);
+            if (GameUtils.level == 3) {
+                GameUtils.drawString(graphics, "All Completed", Color.green, 30, 150, 290);
+            } else {
+                GameUtils.drawString(graphics, "Completed", Color.green, 30, 150, 290);
+            }
         }
     }
 

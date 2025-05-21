@@ -20,6 +20,8 @@ public class GameUtils {
 
     public static final Image food = getImage("images/food.png");
 
+    public static int level = 1;
+
     private static Image getImage(final String resourcePath) {
         final URL imageUrl = GameUtils.class.getClassLoader().getResource(resourcePath);
         return Toolkit.getDefaultToolkit().getImage(imageUrl);
