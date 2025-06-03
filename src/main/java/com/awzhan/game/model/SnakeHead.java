@@ -1,19 +1,20 @@
 package com.awzhan.game.model;
 
-import com.awzhan.game.GameWin;
-import com.awzhan.game.util.GameUtils;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+import com.awzhan.game.GameWin;
+import com.awzhan.game.util.GameUtils;
+
+import lombok.Getter;
+import lombok.Setter;
+
 @Getter
 @Setter
-public class SnakeHead extends Snake {
+public class SnakeHead extends GameObject {
     private String direction = "right";
 
     public SnakeHead(Image image, int x, int y, GameWin gameWin) {

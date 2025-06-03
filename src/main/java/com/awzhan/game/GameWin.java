@@ -1,13 +1,5 @@
 package com.awzhan.game;
 
-import com.awzhan.game.model.Food;
-import com.awzhan.game.model.SnakeBody;
-import com.awzhan.game.model.SnakeHead;
-import com.awzhan.game.util.GameUtils;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,6 +7,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
+
+import com.awzhan.game.model.Food;
+import com.awzhan.game.model.SnakeBody;
+import com.awzhan.game.model.SnakeHead;
+import com.awzhan.game.util.GameUtils;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class GameWin extends JFrame {
     private static final String TITLE = "Snake Game";
@@ -46,6 +47,7 @@ public class GameWin extends JFrame {
         // set frame in the center of the screen
         this.setLocationRelativeTo(null);
         this.setTitle(TITLE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
         this.addKeyListener(new KeyAdapter() {

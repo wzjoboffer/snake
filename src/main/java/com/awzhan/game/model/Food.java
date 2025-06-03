@@ -1,13 +1,13 @@
 package com.awzhan.game.model;
 
-import com.awzhan.game.GameWin;
-import com.awzhan.game.util.GameUtils;
-
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
 
-public class Food extends Snake {
+import com.awzhan.game.GameWin;
+import com.awzhan.game.util.GameUtils;
+
+public class Food extends GameObject {
     private static final Random RANDOM = new Random();
 
     public Food(Image image, int x, int y, GameWin gameWin) {

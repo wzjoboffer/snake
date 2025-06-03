@@ -1,11 +1,11 @@
 package com.awzhan.game.model;
 
-import com.awzhan.game.GameWin;
-
 import java.awt.Graphics;
 import java.awt.Image;
 
-public class SnakeBody extends Snake {
+import com.awzhan.game.GameWin;
+
+public class SnakeBody extends GameObject {
 
     public SnakeBody(Image image, int x, int y, GameWin gameWin) {
         super(image, x, y, gameWin);

@@ -1,13 +1,13 @@
 package com.awzhan.game.util;
 
-import lombok.experimental.UtilityClass;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class GameUtils {
